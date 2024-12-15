@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('plantilla');
 });
 
+Route::view('/', 'paginas.blog');
+Route::view('/administradores', 'paginas.administradores');
+Route::view('/anuncios', 'paginas.anuncios');
+Route::view('/articulos', 'paginas.articulos');
+Route::view('/banner', 'paginas.banner');
+Route::view('/categorias', 'paginas.categorias');
+Route::view('/opiniones', 'paginas.opiniones');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
