@@ -8,5 +8,5 @@
 	echo date("Y");
 @endphp
 
-<a href="{{ substr(url("/"),0,-11) }}">Yisusad Blog</a>.</strong>
+<a href="{{ substr(url("/"),0,-11) }}" target="_blank">Yisusad Blog</a>.</strong>
 </footer>

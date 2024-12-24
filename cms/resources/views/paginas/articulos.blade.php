@@ -71,6 +71,7 @@
                     
                     <h3>{{ $value["titulo_articulo"] }}</h3>
                     <h5>{{ $value->categorias["titulo_categoria"] }}</h5>
+                    
                   </li>
 
                 @endforeach
