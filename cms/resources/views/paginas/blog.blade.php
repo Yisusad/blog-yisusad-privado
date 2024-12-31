@@ -49,7 +49,11 @@
 
           <form action="{{url('/')}}/blog/{{$element->id}}" method="post" enctype="multipart/form-data">
 
+            <!-- Se agrega el método PUT para que el formulario pueda ser enviado -->
+
             @method('PUT')
+
+            <!-- Se agrega el token de seguridad -->
 
             @csrf
 
