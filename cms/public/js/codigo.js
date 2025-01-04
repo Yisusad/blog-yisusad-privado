@@ -50,6 +50,8 @@ $(document).on("click", ".agregarRed", function(){
 
 	//Actualizar el registro de la BD
 
+	//convierto el string en un array con parse
+
 	var listaRed = JSON.parse($("#listaRed").val());
 	
 	listaRed.push({
@@ -60,6 +62,8 @@ $(document).on("click", ".agregarRed", function(){
 
 	})
 
+	//convierto el array en un string con stringify
+
 	$("#listaRed").val(JSON.stringify(listaRed));
 
 })
@@ -67,21 +71,30 @@ $(document).on("click", ".agregarRed", function(){
 /*=============================================
 ELIMINAR RED
 =============================================*/
+
+//selecciono el documento y el elemento que se va a eliminar
 $(document).on("click", ".eliminarRed", function(){
+
+	// se guarda en una variable el valor del input listaRed
 
 	var listaRed = JSON.parse($("#listaRed").val());
 
 	var red = $(this).attr("red");
 	var url = $(this).attr("url");
 
+	//recorro el array listaRed
 	for(var i = 0; i < listaRed.length; i++){
 
+		//si el valor de red y url es igual al valor de icono y url del array listaRed
 		if(red == listaRed[i]["icono"] && url == listaRed[i]["url"]){
 			
+			//elimino el valor del array listaRed
 			listaRed.splice(i, 1);
 			
+			//Remuevo el elemento del DOM
 			$(this).parent().parent().parent().parent().remove();
 
+			//convierto el string en un array
 			$("#listaRed").val(JSON.stringify(listaRed));
 
 		}
