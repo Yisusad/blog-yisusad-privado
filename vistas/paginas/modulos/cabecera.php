@@ -13,7 +13,7 @@ CABECERA
 				
 				<a href="<?php echo $blog["dominio"]; ?>">
 					
-					<img src="<?php echo $blog["dominio"]; ?><?php echo $blog["logo"]; ?>" alt="Logo de Yisusad Blog" class="img-fluid logotipo">
+					<img src="<?php echo $blog["servidor"]; ?><?php echo $blog["logo"]; ?>" alt="Logo de Yisusad Blog" class="img-fluid logotipo">
 
 				</a>
 

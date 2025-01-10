@@ -66,7 +66,7 @@ CONTENIDO INICIO
 
                                 <a href="<?php echo $blog["dominio"].$value["ruta_categoria"]."/".$value["ruta_articulo"];?>"><h5 class="d-block d-lg-none py-3"><?php echo $value["titulo_articulo"];?></h5></a>
                     
-                                <a href="<?php echo $blog["dominio"].$value["ruta_categoria"]."/".$value["ruta_articulo"];?>"><img src="<?php echo $blog["dominio"]; ?><?php echo $value["portada_articulo"];?>" alt="<?php echo $value["titulo_articulo"];?>" class="img-fluid" width="100%"></a>
+                                <a href="<?php echo $blog["dominio"].$value["ruta_categoria"]."/".$value["ruta_articulo"];?>"><img src="<?php echo $blog["servidor"]; ?><?php echo $value["portada_articulo"];?>" alt="<?php echo $value["titulo_articulo"];?>" class="img-fluid" width="100%"></a>
 
                             </div>
 
@@ -131,7 +131,7 @@ CONTENIDO INICIO
 									
 									<a href="<?php echo $blog["dominio"].$categoria[0]["ruta_categoria"]."/".$value["ruta_articulo"]; ?>">
 
-										<img src="<?php echo $blog["dominio"].$value["portada_articulo"]; ?>" alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid">
+										<img src="<?php echo $blog["servidor"].$value["portada_articulo"]; ?>" alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid">
 
 									</a>
 

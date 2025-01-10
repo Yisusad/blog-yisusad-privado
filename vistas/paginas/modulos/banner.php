@@ -16,7 +16,7 @@ $banner = ControladorBlog::ctrTraerBanners("inicio");
 
 				<li>
 				
-					<img src="<?php echo $blog["dominio"].$value["img_banner"];?>" class="img-fluid">
+					<img src="<?php echo $blog["servidor"].$value["img_banner"];?>" class="img-fluid">
 
 				</li>
 

@@ -62,14 +62,18 @@ class BlogController extends Controller
             ]);
 
             //Validar imágenes logo
+
+            //Revisa si el campo logo_temporal no está vacío
             if ($logo["logo_temporal"] != "") {
 
+                //Valida si el campo logo_temporal es una imagen, con extensión jpg, jpeg o png y con un tamaño máximo de 2MB
                 $validarLogo = \Validator::make($logo, [
 
                     "logo_temporal" => 'required|image|mimes:jpg,jpeg,png|max:2000000'
 
                 ]);
 
+                //Si la validación falla, redirige a la página principal con un mensaje de error
                 if ($validarLogo->fails()) {
 
                     return redirect("/")->with("no-validacion-imagen", "");
@@ -116,16 +120,20 @@ class BlogController extends Controller
 
                 if ($logo["logo_temporal"] != "") {
 
+
+                    //Borrar la imagen actual
                     unlink($datos["logo_actual"]);
 
-                    $aleatorio = mt_rand(100, 999);
+                    //$aleatorio = mt_rand(100, 999);
+                    $aleatorio = uniqid();
 
+                    // Crear la ruta de la imagen
                     $rutaLogo = "img/blog/" . $aleatorio . "." . $logo["logo_temporal"]->guessExtension();
 
                     // move_uploaded_file($logo["logo_temporal"], $rutaLogo);
 
                     //Redimensionar Imágen
-
+                    //Obtener el ancho y alto de la imagen
                     list($ancho, $alto) = getimagesize($logo["logo_temporal"]);
 
                     $nuevoAncho = 700;
