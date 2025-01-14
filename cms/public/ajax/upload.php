@@ -14,7 +14,7 @@ if(isset($_FILES["file"]["name"])){
 
 	}else{
 
-		echo  $mensaje = 'Ooops!  El archivo temporal no se puedo cear:  '.$_FILES['file']['error'];
+		echo  $mensaje = 'Ooops!  El archivo temporal no se puedo crear:  '.$_FILES['file']['error'];
 
 	}
 

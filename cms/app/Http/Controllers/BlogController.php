@@ -263,6 +263,7 @@ class BlogController extends Controller
                     "portada" => $rutaPortada,
                     "logo" => $rutaLogo,
                     "icono" => $rutaIcono,
+                    //Reemplazar la ruta de las imágenes temporales por la de las imágenes finales
                     "sobre_mi" => str_replace('src="' . $blog[0]["servidor"] . 'img/temp/blog', 'src="' . $blog[0]["servidor"] . 'img/blog', $datos["sobre_mi"]),
                     "sobre_mi_completo" => str_replace('src="' . $blog[0]["servidor"] . 'img/temp/blog', 'src="' . $blog[0]["servidor"] . 'img/blog', $datos["sobre_mi_completo"])
                 );
