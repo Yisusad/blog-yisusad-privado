@@ -88,10 +88,18 @@
 
                     <td>{{($value["email"])}}</td>
 
-                    <td><img src="{{($value["foto"])}}" alt="foto admin" class="img-fluid rounded-circle"></td>
-                    
-                    <td>{{($value["rol"])}}</td>
+                    @if ($value["foto"] == null)
+                      <td><img src="{{url('/')}}/img/administradores/admin.png" alt="foto admin" class="img-fluid rounded-circle"></td>
+                    @else
+                      <td><img src="{{url('/')}}/{{($value["foto"])}}" alt="foto admin" class="img-fluid rounded-circle"></td>
+                    @endif
 
+                    @if ($value["rol"] == null)
+                      <td>Administrador</td>
+                    @else
+                      <td>{{($value["rol"])}}</td>
+                    @endif
+                    
                     <td>
 
                       <button class="btn btn-warning btn-sm">Editar</button>
