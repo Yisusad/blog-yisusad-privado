@@ -33,6 +33,8 @@ class AdministradoresController extends Controller
         }
     }
 
+    // Función actualizar un administrador
+
     public function update($id, Request $request){
 
         //Recoger datos del administrador
@@ -145,6 +147,36 @@ class AdministradoresController extends Controller
            return redirect("/administradores")->with("error", "");
 
        }
+
+    }
+
+    // Función para eliminar un administrador
+
+    public function destroy($id, Request $request){
+
+    	$validar = Administradores::where("id", $id)->get();
+    	
+    	if(!empty($validar) && $id != 1){
+
+    		if(!empty($validar[0]["foto"])){
+
+    			unlink($validar[0]["foto"]);
+    		
+    		}
+
+    		$administrador = Administradores::where("id",$validar[0]["id"])->delete();
+
+    		// return redirect("/administradores")->with("ok-eliminar", "");
+
+    		//Responder al AJAX de JS
+    		return "ok";
+    	
+    	}else{
+
+    		return redirect("/administradores")->with("no-borrar", "");
+    	
+
+    	}
 
     }
 }

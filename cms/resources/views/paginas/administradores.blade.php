@@ -106,9 +106,24 @@
                         <i class="fas fa-pencil-alt text-white"></i>
                       </a>
 
-                      <a class="btn btn-danger btn-sm">
+                      {{--Borrado con Sweet Alert--}}
+
+                      <button class="btn btn-danger btn-sm eliminarRegistro" action="{{url('/')}}/administradores/{{$value["id"]}}" method="DELETE" pagina="administradores">
+                        @csrf 
                         <i class="fas fa-trash-alt"></i>
-                      </a>
+                      </button>
+
+                      {{--Borrado Directo--}}
+
+                      {{-- <form method="POST" action="{{url('/')}}/administradores/{{$value["id"]}}" style="display: inline;">
+                        @method('DELETE')
+                        @csrf
+
+                        <button type="submit" class="btn btn-danger btn-sm">
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
+
+                      </form> --}}
 
                     </td>
 
@@ -436,6 +451,23 @@
   <script>
       notie.alert({ type: 1, text: '¡El administrador ha sido actualizado correctamente!', time: 10 })
  </script>
+
+@endif
+
+
+@if (Session::has("ok-eliminar"))
+
+  <script>
+      notie.alert({ type: 1, text: '¡El administrador ha sido borrado correctamente!', time: 10 })
+ </script>
+
+@endif
+
+@if (Session::has("no-eliminar"))
+
+<script>
+    notie.alert({ type: 2, text: '¡No se borró administrador!', time: 10 })
+</script>
 
 @endif
 
