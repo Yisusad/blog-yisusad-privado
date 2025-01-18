@@ -32,6 +32,12 @@
 	{{-- NOTIE --}}
 	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/notie.css">
 
+	{{-- DataTable --}}
+	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/responsive.bootstrap4.min.css">
+
+	{{-- SWEET ALERT --}}
+
 	{{-- CSS AdminLTE --}}
 	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/adminlte.min.css">
 
@@ -79,6 +85,13 @@
 	{{-- SWEET ALERT --}}
 	<script src="{{ url('/') }}/js/plugins/sweetalert.js"></script>
 
+	{{-- DataTable --}}
+	<script src="{{ url('/') }}/js/plugins/jquery.dataTables.min.js"></script>
+	<script src="{{ url('/') }}/js/plugins/dataTables.bootstrap4.min.js"></script>
+	<script src="{{ url('/') }}/js/plugins/dataTables.responsive.min.js"></script>
+	<script src="{{ url('/') }}/js/plugins/responsive.bootstrap.min.js"></script>
+
+	{{-- DataTable Buttons --}}
 
 	{{-- JS AdminLTE --}}
 	<script src="{{ url('/') }}/js/plugins/adminlte.js"></script>

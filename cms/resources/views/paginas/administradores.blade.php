@@ -54,7 +54,7 @@
 
             <div class="card-body">
 
-              <table class="table table-bordered table-striped dt-responsive tablaAdministradores" width="100%">
+              <table class="table table-bordered table-striped dt-responsive tablaAdministradores" width="100%" id="tablaAdministradores">
 
                 <thead>
 
@@ -78,7 +78,7 @@
 
                 <tbody>
 
-                  @foreach ($administradores as $key => $value)
+                  {{-- @foreach ($administradores as $key => $value)
                   
                   <tr>
 
@@ -104,14 +104,14 @@
 
                       <a href="{{url('/')}}/administradores/{{$value["id"]}}" class="btn btn-warning btn-sm">
                         <i class="fas fa-pencil-alt text-white"></i>
-                      </a>
+                      </a> --}}
 
                       {{--Borrado con Sweet Alert--}}
 
-                      <button class="btn btn-danger btn-sm eliminarRegistro" action="{{url('/')}}/administradores/{{$value["id"]}}" method="DELETE" pagina="administradores">
+                      {{-- <button class="btn btn-danger btn-sm eliminarRegistro" action="{{url('/')}}/administradores/{{$value["id"]}}" method="DELETE" pagina="administradores">
                         @csrf 
                         <i class="fas fa-trash-alt"></i>
-                      </button>
+                      </button> --}}
 
                       {{--Borrado Directo--}}
 
@@ -125,11 +125,11 @@
 
                       </form> --}}
 
-                    </td>
+                    {{-- </td>
 
                   </tr>
 
-                  @endforeach
+                  @endforeach --}}
 
                 </tbody>
 
