@@ -50,13 +50,14 @@ class AdministradoresController extends Controller
 
     public function show($id){
 
-        $administradores = Administradores::where("id", $id)->get();
+        $administrador = Administradores::where("id", $id)->get();
         $blog = Blog::all();
+        $administradores = Administradores::all();
 
-        if(count($administradores) != 0){
-            return view('paginas.administradores', array('status'=>200,'administradores' => $administradores, 'blog' => $blog));
+        if(count($administrador) != 0){
+            return view('paginas.administradores', array('status'=>200,'administrador' => $administrador, 'blog' => $blog, 'administradores' => $administradores));
         }else{
-            return view('paginas.administradores', array('status'=>404, 'blog' => $blog));
+            return view('paginas.administradores', array('status'=>404, 'blog' => $blog, 'administradores' => $administradores));
         }
     }
 

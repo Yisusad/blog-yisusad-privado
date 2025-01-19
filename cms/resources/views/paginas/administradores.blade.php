@@ -272,7 +272,7 @@
 
 @if (isset($status))
     @if ($status == 200)
-      @foreach ($administradores as $key => $value)
+      @foreach ($administrador as $key => $value)
         <div class="modal" id="editarAdministrador">
   
           <div class="modal-dialog">
