@@ -48,25 +48,33 @@
 
             <div class="card-header">
 
-              <h3 class="card-title">Title</h3>
-
-              <div class="card-tools">
-
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                  <i class="fas fa-times"></i></button>
-
-              </div>
+              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#crearCategoria">Crear Nueva Categoria</button>
 
             </div>
 
             <div class="card-body">
 
-              @foreach ($categorias as $element)
+              {{-- @foreach ($categorias as $element)
                   {{ $element }}
-                @endforeach
+                @endforeach --}}
+            
+              <table class="table table-bordered table-striped dt-responsive" id="tablaCategorias" width="100%">
+                <thead>
+                  <tr>
+                    <th width="10px">#</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Palabras Claves</th>
+                    <th>Ruta</th>
+                    <th width="200px">Imagen</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
 
+                </tbody>
+                
+              </table>
             </div>
 
             <!-- /.card-body -->

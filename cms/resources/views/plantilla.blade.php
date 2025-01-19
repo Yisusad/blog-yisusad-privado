@@ -118,6 +118,12 @@
 	<input type="hidden" id="ruta" value="{{url('/')}}">
 
 	<script src="{{url('/')}}/js/codigo.js"></script>
+	<script src="{{url('/')}}/js/administradores.js"></script>
+	<script src="{{url('/')}}/js/categorias.js"></script>
+	<script src="{{url('/')}}/js/articulos.js"></script>
+	<script src="{{url('/')}}/js/opiniones.js"></script>
+	<script src="{{url('/')}}/js/banner.js"></script>
+	<script src="{{url('/')}}/js/anuncios.js"></script>
 
 	</body>
 @else
