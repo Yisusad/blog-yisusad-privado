@@ -29,7 +29,7 @@ class AdministradoresController extends Controller
                     <i class="fas fa-pencil-alt text-white"></i>
                 </a>
 
-                <button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id.'" method="DELETE" pagina="administradores" token="'.csrf_token().'">
+                <button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id.'" method="DELETE" pagina="administradores" token="'.csrf_token().'" style="margin-left: 5px;">
                     <i class="fas fa-trash-alt text-white"></i>
                 </button>
                                
@@ -42,7 +42,8 @@ class AdministradoresController extends Controller
 
         }
         $blog = Blog::all();
-        return view('paginas.administradores', array('blog' => $blog));
+        $administradores = Administradores::all();
+        return view('paginas.administradores', array('blog' => $blog, 'administradores' => $administradores));
     }
 
     // Función que devuelve la vista de la página de administradores con un administrador en concreto

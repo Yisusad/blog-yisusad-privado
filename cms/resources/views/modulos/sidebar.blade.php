@@ -11,10 +11,26 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{url('/')}}/vistas/img/admin.png" class="img-circle elevation-2" alt="User Image">
+          @foreach ($administradores as $element)
+            @if ($_COOKIE['email_login'] == $element->email)
+              @if ($element->foto == null)
+                <img src="{{url('/')}}/vistas/img/admin.png" class="img-circle elevation-2" alt="User Image">
+              @else
+                <img src="{{url('/')}}/{{$element->foto}}" class="img-circle elevation-2" alt="User Image">
+              @endif
+            @endif
+          @endforeach
         </div>
         <div class="info">
-          <a href="#" class="d-block">Administrador</a>
+          <a href="#" class="d-block">
+
+            @foreach ($administradores as $element)
+              @if ($_COOKIE['email_login'] == $element->email)
+                {{ $element->name }}
+              @endif
+            @endforeach
+
+          </a>
         </div>
       </div>
 
