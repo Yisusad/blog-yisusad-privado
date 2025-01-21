@@ -37,7 +37,7 @@ class CategoriasController extends Controller
                         <i class="fas fa-pencil-alt text-white"></i>
                     </a>
 
-                    <button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id_categoria.'" method="DELETE" pagina="administradores" token="'.csrf_token().'" style="margin-left: 5px;">
+                    <button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id_categoria.'" method="DELETE" pagina="categorias" token="'.csrf_token().'" style="margin-left: 5px;">
                         <i class="fas fa-trash-alt text-white"></i>
                     </button>
                                
@@ -154,6 +154,144 @@ class CategoriasController extends Controller
             return view("paginas.categorias", array("status"=>404, "blog"=>$blog, "administradores"=>$administradores));
 
         }
+    }
+
+    //Actualizar un registro en la tabla categorias
+    public function update($id, Request $request)
+    {
+        //Recogemos los datos de la categoria
+        $datos = array('titulo_categoria' => $request->input("titulo_categoria"),
+        'descripcion_categoria' => $request->input("descripcion_categoria"),
+        'p_claves_categoria' => $request->input("p_claves_categoria"),
+        'ruta_categoria' => $request->input("ruta_categoria"),
+        'imagen_actual' => $request->input("imagen_actual"));
+
+        //Recoger imagen a guardar
+        $imagen = array('imagen_temporal' => $request->file("img_categoria"));
+
+        //Validar datos
+
+        if(!empty($datos)){
+
+            $validar = \Validator::make($datos,[
+
+                "titulo_categoria" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+                "descripcion_categoria" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+                "p_claves_categoria" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+                "ruta_categoria" => "required|regex:/^[a-z0-9-]+$/i",
+                "imagen_actual"=> "required"
+
+            ]);
+
+            if($imagen["imagen_temporal"] != ""){
+
+                $validarImagen = \Validator::make($imagen,[
+
+                 "imagen_temporal" => "required|image|mimes:jpg,jpeg,png|max:2000000"
+
+                ]);
+
+                if($validarImagen->fails()){
+
+                    return redirect("/categorias")->with("no-validacion", "");
+
+                }
+
+            }
+
+            if($validar->fails()){
+
+                return redirect("/categorias")->with("no-validacion", "");
+
+            }else{
+
+                if($imagen["imagen_temporal"] != ""){
+
+                    //Eliminar imagen actual
+                    unlink($datos["imagen_actual"]);
+
+                    //crear ruta para la imagen temporal
+                    $aleatorio = uniqid();
+                    $ruta = "img/categorias/" . $aleatorio . "." . $imagen["imagen_temporal"]->guessExtension();
+
+                    //Redimensionar imagen
+
+                    list($ancho, $alto) = getimagesize($imagen["imagen_temporal"]);
+
+                    $nuevoAncho = 1024;
+                    $nuevoAlto = 576;
+
+                    if ($imagen["imagen_temporal"]->guessExtension() == "jpeg") {
+
+                        $origen = imagecreatefromjpeg($imagen["imagen_temporal"]);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                        imagejpeg($destino, $ruta);
+                    }
+
+                    if ($imagen["imagen_temporal"]->guessExtension() == "png") {
+
+                        $origen = imagecreatefrompng($imagen["imagen_temporal"]);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagealphablending($destino, FALSE);
+                        imagesavealpha($destino, TRUE);
+                        imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                        imagepng($destino, $ruta);
+                    }
+
+                }else{
+                    
+                    $ruta = $datos["imagen_actual"];
+                }
+
+                //Actualizar datos en la base de datos
+
+                $datos = array("titulo_categoria" => $datos["titulo_categoria"],
+                               "descripcion_categoria" => $datos["descripcion_categoria"],
+                               "p_claves_categoria" => json_encode(explode(",", $datos["p_claves_categoria"])),
+                               "ruta_categoria" => $datos["ruta_categoria"],
+                               "img_categoria" => $ruta
+                            );
+                //Actualizar datos en la base de datos
+                $categoria = Categorias::where("id_categoria", $id)->update($datos);
+
+                return redirect("/categorias")->with("ok-editar", "");
+
+            }
+
+        }else{
+
+            return redirect("/categorias")->with("error", "");
+
+        }
+
+
+    }
+
+    public function destroy($id, Request $request){
+
+    	$validar =Categorias::where("id_categoria", $id)->get();
+    	
+    	if(!empty($validar)){
+
+    		if(!empty($validar[0]["img_categoria"])){
+
+    			unlink($validar[0]["img_categoria"]);
+    		
+    		}
+
+            //Aqui se borra la categoria
+            $categoria = Categorias::where("id_categoria", $validar[0]["id_categoria"])->delete();
+    		//Responder al AJAX de JS para Sweet Alert
+    		return "ok";
+    	
+    	}else{
+
+    		return redirect("/categorias")->with("no-borrar", "");
+    	
+
+    	}
+
     }
 }
 

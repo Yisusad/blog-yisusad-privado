@@ -356,6 +356,14 @@
  </script>
 
 @endif
+
+@if (Session::has("ok-editar"))
+
+  <script>
+      notie.alert({ type: 1, text: '¡La categoria ha sido actualizada correctamente!', time: 10 })
+ </script>
+
+@endif
 <!-- Notie Js Notificaciones fin -->
 
 @endsection
