@@ -33,13 +33,13 @@ class CategoriasController extends Controller
 
                 $acciones = '<div class="btn-group">
 
-                <a href="'.url()->current().'/'.$data->id_categoria.'" class="btn btn-warning btn-sm">
-                    <i class="fas fa-pencil-alt text-white"></i>
-                </a>
+                    <a href="'.url()->current().'/'.$data->id_categoria.'" class="btn btn-warning btn-sm">
+                        <i class="fas fa-pencil-alt text-white"></i>
+                    </a>
 
-                <button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id_categoria.'" method="DELETE" pagina="administradores" token="'.csrf_token().'" style="margin-left: 5px;">
-                    <i class="fas fa-trash-alt text-white"></i>
-                </button>
+                    <button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id_categoria.'" method="DELETE" pagina="administradores" token="'.csrf_token().'" style="margin-left: 5px;">
+                        <i class="fas fa-trash-alt text-white"></i>
+                    </button>
                                
                 </div>';
 
@@ -133,6 +133,26 @@ class CategoriasController extends Controller
         }else{
 
             return redirect("/categorias")->with("error", "");
+        }
+    }
+
+    //Editar un registro en la tabla categorias
+    public function show($id)
+    {
+
+        $categoria = Categorias::where("id_categoria", $id)->get();
+        $blog = Blog::all();
+        $administradores = Administradores::all();
+
+        if(count($categoria) != 0){
+
+            return view("paginas.categorias", array("status"=>200, "categoria"=>$categoria, "blog"=>$blog, "administradores"=>$administradores)); 
+        }
+
+        else{
+            
+            return view("paginas.categorias", array("status"=>404, "blog"=>$blog, "administradores"=>$administradores));
+
         }
     }
 }
