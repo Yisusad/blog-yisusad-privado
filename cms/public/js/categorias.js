@@ -55,6 +55,9 @@ var tablaCategorias = $("#tablaCategorias").DataTable({
           {
             data: 'ruta_categoria',
             name: 'ruta_categoria',
+            render: function(data, type, full, meta){
+              return '<p class="validarRuta">'+data+'</p>'
+            }
           },
          {
            data: 'img_categoria',

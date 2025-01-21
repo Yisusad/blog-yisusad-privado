@@ -331,3 +331,49 @@ $(document).on("click", ".eliminarRegistro", function(){
 
 })
 
+//Limpieza de rutas/links
+
+function limpiarUrl(texto){
+
+	var texto = texto.toLowerCase();
+	texto = texto.replace(/[á]/g, 'a');
+	texto = texto.replace(/[é]/g, 'e');
+	texto = texto.replace(/[í]/g, 'i');
+	texto = texto.replace(/[ó]/g, 'o');
+	texto = texto.replace(/[ú]/g, 'u');
+	texto = texto.replace(/[ñ]/g, 'n');
+	texto = texto.replace(/ /g, '-');
+
+	return texto;
+
+}
+
+$(document).on("keyup", ".inputRuta", function(){
+
+	// Lo que se escriba en el input se limpiará con la función limpiarUrl
+	$(this).val(limpiarUrl($(this).val()));
+
+});
+
+//Validar y evitar repetir ruta de categoría
+
+$(document).on("change", ".inputRuta", function(){
+
+	$(".alert").remove();
+	//capturo los valores de la ruta de la categoría
+	var valorRuta = $(this).val();
+	var validarRuta = $(".validarRuta");
+
+	//Recorro el array validarRuta para comparar si el valor de la ruta ya existe
+	for(var i = 0; i < validarRuta.length; i++){
+
+		if($(validarRuta[i]).html() == valorRuta){
+
+			//Si el valor de la ruta ya existe, se mostrará un mensaje de alerta y se limpiará el input
+			$(".inputRuta").val("");
+			$(".inputRuta").parent().after('<div class="alert alert-danger">Esta ruta ya existe, por favor ingrese otra</div>');
+
+		}
+
+	}
+});
