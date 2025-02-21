@@ -362,6 +362,13 @@
   <script>
       notie.alert({ type: 1, text: '¡La categoria ha sido actualizada correctamente!', time: 10 })
  </script>
+@endif
+
+@if (Session::has("no-borrar"))
+
+  <script>
+      notie.alert({ type: 1, text: '¡Error al borrar la categoria', time: 10 })
+ </script>
 
 @endif
 <!-- Notie Js Notificaciones fin -->

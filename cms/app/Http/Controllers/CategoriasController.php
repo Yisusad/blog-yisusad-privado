@@ -268,20 +268,22 @@ class CategoriasController extends Controller
 
     }
 
+    // Eliminar un registro en la tabla categorias
+
     public function destroy($id, Request $request){
 
-    	$validar =Categorias::where("id_categoria", $id)->get();
+    	$paraEliminar =Categorias::where("id_categoria", $id)->get();
     	
-    	if(!empty($validar)){
+    	if(!empty($paraEliminar)){
 
-    		if(!empty($validar[0]["img_categoria"])){
+    		if(!empty($paraEliminar[0]["img_categoria"])){
 
-    			unlink($validar[0]["img_categoria"]);
+    			unlink($paraEliminar[0]["img_categoria"]);
     		
     		}
 
             //Aqui se borra la categoria
-            $categoria = Categorias::where("id_categoria", $validar[0]["id_categoria"])->delete();
+            $categoria = Categorias::where("id_categoria", $paraEliminar[0]["id_categoria"])->delete();
     		//Responder al AJAX de JS para Sweet Alert
     		return "ok";
     	
