@@ -7,6 +7,12 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+		<script>
+			var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+			var ruta = "{{ url('/') }}"; // Define la ruta base
+		</script>
+
 	<link rel="icon" href="{{$blog[0]["icono"]}}">
 
      <!--=====================================

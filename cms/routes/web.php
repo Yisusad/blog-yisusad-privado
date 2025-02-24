@@ -35,6 +35,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 //RUTAS QUE INCLUYEN TODOS LOS MÉTODOS HTTP
 //Route::resource
 //php artisan route:list
@@ -47,3 +49,8 @@ Route::resource('/articulos', 'ArticulosController');
 Route::resource('/opiniones', 'OpinionesController');
 Route::resource('/banner', 'BannerController');
 Route::resource('/anuncios', 'AnunciosController');
+
+
+//Ruta para el método toggleAprobacion
+use App\Http\Controllers\OpinionesController;
+Route::post('/opiniones/{id}/toggle-aprobacion', [OpinionesController::class, 'toggleAprobacion'])->name('opiniones.toggle-aprobacion');

@@ -396,7 +396,7 @@ Modal Editar Artículo
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer d-flex justify-content-between">
+            <div class="modal-footer d-flex">
 
               <div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
