@@ -14,12 +14,13 @@ $banner = ControladorBlog::ctrTraerBanners("inicio");
 
 			<?php foreach ($banner as $key => $value) :?>
 
-				<li>
-				
-					<img src="<?php echo $blog["servidor"].$value["img_banner"];?>" class="img-fluid">
+				<?php if ($value["pagina_banner"] === 'inicio') : ?>
+					<li>				
+						<img src="<?php echo $blog["servidor"].$value["img_banner"];?>" class="img-fluid">
 
-				</li>
-
+					</li>
+				<?php endif; ?>
+	
 			<?php endforeach; ?>
 
 		</ul>

@@ -245,7 +245,7 @@ CONTENIDO ARTÍCULO
 
 										<?php if ($value["respuesta_opinion"]): ?>
 
-											<div class="col-9 col-sm-8 col-lg-10 p-2 text-muted">
+											<div class="col-9 col-sm-8 col-lg-10 p-2">
 												
 												<p><?php echo $value["respuesta_opinion"]; ?></p>
 
@@ -254,13 +254,13 @@ CONTENIDO ARTÍCULO
 													$formatoFechaR = date('d-m-Y', $formatoFechaR);
 												?>
 
-												<span class="small float-right"><?php echo $value["nombre_admin"]; ?> | <?php echo $formatoFechaR; ?></span>
+												<span class="small float-right"><?php echo $value["name"]; ?> | <?php echo $formatoFechaR; ?></span>
 
 											</div>
 
 											<div class="col-3 col-sm-4 col-lg-2 p-2">
 											
-												<img src="<?php echo $blog["servidor"].$value["foto_admin"]; ?>" class="img-thumbnail">	
+												<img src="<?php echo $blog["servidor"].$value["foto"]; ?>" class="img-thumbnail">	
 
 											</div>
 								        <?php endif ?>

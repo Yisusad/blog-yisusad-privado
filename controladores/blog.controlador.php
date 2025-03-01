@@ -61,7 +61,7 @@ Class ControladorBlog{
     static public function ctrMostrarOpiniones($item, $valor){
 
         $tabla1 = "opiniones";
-        $tabla2 = "administradores";
+        $tabla2 = "users";
 
         $respuesta = ModeloBlog::mdlMostrarOpiniones($tabla1, $tabla2, $item, $valor);
 

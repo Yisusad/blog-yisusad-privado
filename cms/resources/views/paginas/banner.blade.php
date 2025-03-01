@@ -145,7 +145,7 @@ Crear Banner
               <i class="fas fa-list-ul"></i>
             </div>
 
-            <input type="text" class="form-control" name="titulo_banner" placeholder="Ingrese el titulo del banner" value="{{old("titulo_banner")}}" required> 
+            <input type="text" class="form-control" name="titulo_banner" placeholder="Ingrese el titulo del banner" value="{{old("titulo_banner")}}"> 
 
           </div> 
 
@@ -157,7 +157,7 @@ Crear Banner
               <i class="fas fa-pencil-alt"></i>
             </div>
 
-            <input type="text" class="form-control" name="descripcion_banner" placeholder="Ingrese la descripción del banner" value="{{old("descripcion_banner")}}" maxlength="220" required> 
+            <input type="text" class="form-control" name="descripcion_banner" placeholder="Ingrese la descripción del banner" value="{{old("descripcion_banner")}}" maxlength="220"> 
 
           </div> 
 
@@ -256,7 +256,7 @@ Crear Banner
                       <i class="fas fa-list-ul"></i>
                     </div>
       
-                    <input type="text" class="form-control" name="titulo_banner" placeholder="Ingrese título del banner" value="{{ $value->titulo_banner }}" required>
+                    <input type="text" class="form-control" name="titulo_banner" placeholder="Ingrese título del banner" value="{{ $value->titulo_banner }}">
       
                   </div>
       
@@ -268,7 +268,7 @@ Crear Banner
                       <i class="fas fa-pencil-alt"></i>
                     </div>
       
-                    <input type="text" class="form-control" name="descripcion_banner" placeholder="Ingrese descripción del banner" value="{{ $value->descripcion_banner }}" maxlength="30" required>
+                    <input type="text" class="form-control" name="descripcion_banner" placeholder="Ingrese descripción del banner" value="{{ $value->descripcion_banner }}">
       
                   </div>
 
